@@ -441,16 +441,16 @@ the server, and place an identifier to the correct database record into
 the cookie.  (In fact, as we'll see, this is exactly what Rails apps
 do.)
 But since our game state is small, we can just put the whole
-thing in the cookie.  Sinatra's `session` library lets us do this: in
-the context of the Sinatra app, anything we place into the special
+thing in the cookie.  Rails's `session` library lets us do this: in
+the context of the Rails app, anything we place into the special
 "magic" hash `session[]` is preserved across requests.  In fact,
 objects placed there are *serialized* into a text-friendly form that is
 preserved for us.
 
 There is one other session-like object we will use.  In some cases
 above, one action will perform some state change and then redirect to
-another action, such as when the Guess action (triggered by `POST
-/guess`) redirects to the Show action (`GET /show`) to redisplay the
+another action, such as when the Guess action (triggered by `POST /guess`) 
+redirects to the Show action (`GET /show`) to redisplay the
 game state after each guess.  But what if the Guess action wants to
 display a message to the player, such as to inform them that they have
 erroneously repeated a guess?  The problem is that since every request
@@ -468,6 +468,3 @@ messages in the `session[]` hash?
 > it.  The common case for a message that must survive a redirect is
 > that it should only be shown once; `flash[]` includes the extra
 > functionality of erasing the messages after the next request.
-
-Running the Rails app
------------------------
